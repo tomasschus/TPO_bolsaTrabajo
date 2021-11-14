@@ -27,4 +27,8 @@ public class Notificacion {
     public void setNroCelularFrom(String nroCelularFrom) {
         this.nroCelularFrom = nroCelularFrom;
     }
+
+    public String getMessage() {
+        return message;
+    }
 }
