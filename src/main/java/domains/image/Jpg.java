@@ -1,12 +1,10 @@
 package domains.image;
 
-import domains.OfertaLaboral;
-import interfaces.Image;
+public class Jpg implements ExportStrategy {
 
-public class Jpg implements Image {
 
     @Override
-    public void generar(OfertaLaboral ofertaLaboral) {
-
+    public String exportar(Exportable exportable) {
+        return null;
     }
 }

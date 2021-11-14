@@ -1,12 +1,10 @@
 package domains.image;
 
-import domains.OfertaLaboral;
-import interfaces.Image;
+public class Png implements ExportStrategy {
 
-public class Png implements Image {
 
     @Override
-    public void generar(OfertaLaboral ofertaLaboral) {
-
+    public String exportar(Exportable exportable) {
+        return null;
     }
 }
