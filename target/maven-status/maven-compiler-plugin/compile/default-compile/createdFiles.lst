@@ -18,10 +18,12 @@ controlador\PostulacionController.class
 interfaces\PostulacionService.class
 domains\state\Cerrada.class
 domains\image\Svg.class
+domains\Requisitos.class
 domains\notification\NotificarEmail.class
 domains\OfertaLaboral.class
 interfaces\EmpresaService.class
 enums\CategoriasPublicacionEnum.class
+enums\StateEnum.class
 domains\image\FactoryImage.class
 domains\notification\Notificador.class
 dtos\PostulacionDTO.class
