@@ -4,5 +4,5 @@ import domains.Postulacion;
 
 public interface PostulacionService {
 
-    void postularse(Postulacion postulacion, Long id) throws Exception;
+    String postularse(Postulacion postulacion, Long id) throws Exception;
 }

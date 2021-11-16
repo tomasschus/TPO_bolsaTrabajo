@@ -8,9 +8,8 @@ public class PostulacionController {
 
     private PostulacionService postulacionService;
 
-    public void postularse(PostulacionDTO postulacionDTO) {
+    public String postularse(PostulacionDTO postulacionDTO) throws Exception {
         Postulacion postulacion = new Postulacion();
-
-        postulacionService.postularse(postulacion, 1L);
+        return postulacionService.postularse(postulacion,  postulacionDTO.getId());
     }
 }

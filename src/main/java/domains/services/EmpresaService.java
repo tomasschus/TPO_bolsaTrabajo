@@ -56,7 +56,8 @@ public class EmpresaService implements interfaces.EmpresaService {
                 ofertaLaboral.setModalidadContrato(modalidadContrato);
                 ofertaLaboral.setTipoTrabajo(tipoTrabajo);
                 ofertaLaboral.setLugarTrabajo(lugarTrabajo);
-                ofertaLaboral.setRequisitos(requisitos);
+                //TODO arreglar (Se cambio requisitos de string a object)
+                //ofertaLaboral.setRequisitos(requisitos);
                 ofertaLaboral.setSueldoOfrecido(sueldoOfrecido);
                 ofertaLaboral.setCategoria(categoria);
                 return true;

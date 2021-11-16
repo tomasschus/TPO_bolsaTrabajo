@@ -39,8 +39,8 @@ public class OfertaLaboral {
         this.empresa.notificarPublicacion(postulacion, notifyStrategy);
     }
 
-    public OfertaLaboral(Long id, String tituloBusqueda, String descripcionPuesto, String modalidadContrato, String tipoTrabajo, String lugarTrabajo, String requisitos, Integer sueldoOfrecido, CategoriasPublicacionEnum categoria, ZonedDateTime fechaPublicacion, Estado estado, List<Postulacion> postulantes, Empresa empresa, NotifyStrategy notifyStrategy) {
-        this.id=id;
+    public OfertaLaboral(Long id, String tituloBusqueda, String descripcionPuesto, String modalidadContrato, String tipoTrabajo, String lugarTrabajo, Requisitos requisitos, Integer sueldoOfrecido, CategoriasPublicacionEnum categoria, ZonedDateTime fechaPublicacion, Estado estado, List<Postulacion> postulantes, Empresa empresa, NotifyStrategy notifyStrategy) {
+        this.id = id;
         this.tituloBusqueda = tituloBusqueda;
         this.descripcionPuesto = descripcionPuesto;
         this.modalidadContrato = modalidadContrato;
@@ -100,11 +100,15 @@ public class OfertaLaboral {
         this.lugarTrabajo = lugarTrabajo;
     }
 
-    public String getRequisitos() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Requisitos getRequisitos() {
         return requisitos;
     }
 
-    public void setRequisitos(String requisitos) {
+    public void setRequisitos(Requisitos requisitos) {
         this.requisitos = requisitos;
     }
 
