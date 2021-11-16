@@ -16,7 +16,7 @@ public class OfertaLaboral {
     private String modalidadContrato;
     private String tipoTrabajo;
     private String lugarTrabajo;
-    private String requisitos;
+    private Requisitos requisitos;
     private Integer sueldoOfrecido;
     private CategoriasPublicacionEnum categoria;
     private ZonedDateTime fechaPublicacion;
@@ -29,9 +29,6 @@ public class OfertaLaboral {
         this.estado = estado;
     }
 
-    public void validarRequisitos(Postulacion postulacion) {
-        //TODO
-    }
 
     public void agregarPostulacion(Postulacion postulacion) {
         this.postulantes.add(postulacion);

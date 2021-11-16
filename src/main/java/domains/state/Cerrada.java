@@ -1,7 +1,7 @@
 package domains.state;
 
 import domains.OfertaLaboral;
-import interfaces.Image;
+import enums.StateEnum;
 
 public class Cerrada extends Estado{
 
@@ -13,6 +13,10 @@ public class Cerrada extends Estado{
 
     public void reabrir(OfertaLaboral ofertaLaboral) {
         ofertaLaboral.cambiarEstado(new Abierta());
+    }
+
+    public StateEnum getEstado() {
+        return StateEnum.CERRADA;
     }
 
 }
