@@ -30,6 +30,7 @@ public class PostulacionServiceImpl implements PostulacionService {
 
         OfertaLaboral ofertaLaboral = findById(id, ofertaLaborales);
 
+
         if(StateEnum.ABIERTA.equals(ofertaLaboral.getEstado().getEstado())) {
             //Valido que cumpla requisitos
             validateRequisitos(ofertaLaboral.getRequisitos(),postulacion.getPostulante());
@@ -43,11 +44,14 @@ public class PostulacionServiceImpl implements PostulacionService {
     }
 
     public OfertaLaboral findById(Long id, ArrayList<OfertaLaboral> ofertas) throws Exception {
-        return   ofertas
+            OfertaLaboral ofertaLaboral = ofertas
                 .stream()
                 .filter(o -> o.getId() == id)
                 .findFirst()
                 .orElseThrow(() -> new Exception("id-oferta " + id + " not exist"));
+
+            ofertaLaboral.visitada();
+            return ofertaLaboral;
     }
 
     private void validateRequisitos(Requisitos requisitos, Postulante postulante) throws Exception {

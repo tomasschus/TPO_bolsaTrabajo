@@ -24,6 +24,7 @@ public class OfertaLaboral {
     private Empresa empresa;
     private NotifyStrategy notifyStrategy;
     private ZonedDateTime vigenteHasta;
+    private Integer numeroDeVisitas = 0;
 
     public void cambiarEstado(Estado estado) {
         this.estado = estado;
@@ -33,6 +34,10 @@ public class OfertaLaboral {
     public void agregarPostulacion(Postulacion postulacion) {
         this.postulantes.add(postulacion);
         notificar(postulacion);
+    }
+
+    public void visitada() {
+        this.numeroDeVisitas = this.numeroDeVisitas + 1;
     }
 
     public void notificar(Postulacion postulacion) {
@@ -167,5 +172,13 @@ public class OfertaLaboral {
 
     public void setNotifyStrategy(NotifyStrategy notifyStrategy) {
         this.notifyStrategy = notifyStrategy;
+    }
+
+    public Integer getNumeroDeVisitas() {
+        return numeroDeVisitas;
+    }
+
+    public void setNumeroDeVisitas(Integer numeroDeVisitas) {
+        this.numeroDeVisitas = numeroDeVisitas;
     }
 }

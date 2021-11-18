@@ -2,14 +2,10 @@ package interfaces;
 
 import domains.Empresa;
 import domains.OfertaLaboral;
-<<<<<<< HEAD
 import domains.Postulacion;
-=======
 import domains.Requisitos;
->>>>>>> 45d28cda167d7933b8ae40923061257593380b36
 import domains.notification.Notificador;
 import enums.CategoriasPublicacionEnum;
-
 import java.util.ArrayList;
 import java.util.List;
 

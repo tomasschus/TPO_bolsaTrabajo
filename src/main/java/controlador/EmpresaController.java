@@ -62,7 +62,7 @@ public class EmpresaController {
        return empresaService.getPostulantes(getInstanceEmpresas(), razonSocial, id);
     }
 
-    public static ArrayList getInstanceEmpresas() {
+    public static ArrayList<Empresa> getInstanceEmpresas() {
         if(empresas == null) {
             return new ArrayList<>();
         }
