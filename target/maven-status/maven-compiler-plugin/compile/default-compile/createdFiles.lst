@@ -2,8 +2,6 @@ domains\notification\NotificarSMS.class
 domains\image\Jpg.class
 domains\image\ExportStrategy.class
 domains\image\Exportable.class
-domains\services\PostulacionServiceImpl.class
-domains\services\EmpresaService.class
 domains\Postulacion.class
 interfaces\Observer.class
 domains\image\Png.class
@@ -16,6 +14,7 @@ domains\notification\NotificarWhatsapp.class
 controlador\EmpresaController.class
 controlador\PostulacionController.class
 interfaces\PostulacionService.class
+services\EmpresaServiceImpl.class
 domains\state\Cerrada.class
 domains\image\Svg.class
 domains\Requisitos.class
@@ -24,6 +23,7 @@ domains\OfertaLaboral.class
 interfaces\EmpresaService.class
 enums\CategoriasPublicacionEnum.class
 enums\StateEnum.class
+services\PostulacionServiceImpl.class
 domains\image\FactoryImage.class
 domains\notification\Notificador.class
 dtos\PostulacionDTO.class

@@ -1,6 +1,5 @@
 package domains;
 
-import domains.notification.Notificador;
 import domains.state.Estado;
 import enums.CategoriasPublicacionEnum;
 import interfaces.NotifyStrategy;
@@ -24,6 +23,7 @@ public class OfertaLaboral {
     private List<Postulacion> postulantes;
     private Empresa empresa;
     private NotifyStrategy notifyStrategy;
+    private ZonedDateTime vigenteHasta;
 
     public void cambiarEstado(Estado estado) {
         this.estado = estado;
@@ -39,7 +39,7 @@ public class OfertaLaboral {
         this.empresa.notificarPublicacion(postulacion, notifyStrategy);
     }
 
-    public OfertaLaboral(Long id, String tituloBusqueda, String descripcionPuesto, String modalidadContrato, String tipoTrabajo, String lugarTrabajo, Requisitos requisitos, Integer sueldoOfrecido, CategoriasPublicacionEnum categoria, ZonedDateTime fechaPublicacion, Estado estado, List<Postulacion> postulantes, Empresa empresa, NotifyStrategy notifyStrategy) {
+    public OfertaLaboral(Long id, String tituloBusqueda, String descripcionPuesto, String modalidadContrato, String tipoTrabajo, String lugarTrabajo, Requisitos requisitos, Integer sueldoOfrecido, CategoriasPublicacionEnum categoria, ZonedDateTime fechaPublicacion, Estado estado, List<Postulacion> postulantes, Empresa empresa, NotifyStrategy notifyStrategy, ZonedDateTime vigenteHasta) {
         this.id = id;
         this.tituloBusqueda = tituloBusqueda;
         this.descripcionPuesto = descripcionPuesto;
@@ -54,6 +54,7 @@ public class OfertaLaboral {
         this.postulantes = postulantes;
         this.empresa = empresa;
         this.notifyStrategy = notifyStrategy;
+        this.vigenteHasta = vigenteHasta;
     }
 
     public Long getId() {

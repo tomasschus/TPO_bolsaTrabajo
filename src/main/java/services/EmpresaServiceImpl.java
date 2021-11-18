@@ -1,4 +1,4 @@
-package domains.services;
+package services;
 
 import domains.Empresa;
 import domains.OfertaLaboral;
@@ -7,7 +7,7 @@ import domains.state.Cerrada;
 import enums.CategoriasPublicacionEnum;
 import java.util.ArrayList;
 
-public class EmpresaService implements interfaces.EmpresaService {
+public class EmpresaServiceImpl implements interfaces.EmpresaService {
 
     @Override
     public Empresa crearEmpresa(String razonSocial, String direccion, Integer telefono, Integer cantidadPublicaciones, String rubro, String email, String nroCelular, Notificador notificador) {

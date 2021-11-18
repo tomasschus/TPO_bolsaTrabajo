@@ -3,18 +3,20 @@ package controlador;
 import domains.Empresa;
 import domains.OfertaLaboral;
 import domains.notification.Notificador;
-import domains.services.EmpresaService;
+import interfaces.EmpresaService;
+import services.EmpresaServiceImpl;
 import enums.CategoriasPublicacionEnum;
 
 import java.util.ArrayList;
 
 public class EmpresaController {
+
     private EmpresaService empresaService;
     private ArrayList<Empresa> empresas;
 
     public EmpresaController(){
         empresas = new ArrayList<>();
-        empresaService = new EmpresaService();
+        empresaService = new EmpresaServiceImpl();
     }
 
 

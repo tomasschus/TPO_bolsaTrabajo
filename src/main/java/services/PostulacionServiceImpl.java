@@ -1,4 +1,4 @@
-package domains.services;
+package services;
 
 import domains.OfertaLaboral;
 import domains.Postulacion;
