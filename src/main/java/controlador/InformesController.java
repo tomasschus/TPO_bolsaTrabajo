@@ -5,7 +5,6 @@ import domains.OfertaLaboral;
 import java.util.ArrayList;
 
 public class InformesController {
-    //• La oferta laboral que más postulantes recibió en un mes y/o año determinado.
     ArrayList<Empresa> empresas = EmpresaController.getInstanceEmpresas();
 
     public ArrayList<OfertaLaboral> getOfertaLaborales(){
@@ -17,7 +16,8 @@ public class InformesController {
         }
         return ofertasLaborales;
     }
-    
+
+    //• La oferta laboral que más postulantes recibió en un mes y/o año determinado.
     public OfertaLaboral getOfertaLaboralConMasPostulantes(int mes, int año){
         OfertaLaboral masPostulantes = null;
         for (Empresa em: empresas) {
@@ -55,4 +55,21 @@ public class InformesController {
         return masPostulantes;
     }
 
+    //Cuál es la oferta “más exigente”, considerando que es “la más exigente” aquella oferta que tiene
+    //mayor cantidad de requisitos.
+    // hice una funcion en requisios que contabiliza los puntos en funcion de los atributos activos.
+    public OfertaLaboral getOfertaMasExigente(){
+        OfertaLaboral masExigente = null;
+        for(OfertaLaboral of: getOfertaLaborales()){
+            if(masExigente==null){
+                masExigente = of;
+            }
+            else{
+                if(of.getRequisitos().getPuntos()>masExigente.getRequisitos().getPuntos()){
+                    masExigente = of;
+                }
+            }
+        }
+        return masExigente;
+    }
 }
