@@ -1,10 +1,9 @@
 package services;
 
-import domains.OfertaLaboral;
-import domains.Postulacion;
-import domains.Postulante;
-import domains.Requisitos;
+import controlador.EmpresaController;
+import domains.*;
 import enums.StateEnum;
+import interfaces.EmpresaService;
 import interfaces.PostulacionService;
 
 import java.util.ArrayList;
@@ -13,18 +12,23 @@ import java.util.stream.Collectors;
 
 public class PostulacionServiceImpl implements PostulacionService {
 
+    private EmpresaService empresaService;
+
     private static final String MSG_POSTULACION_SUCCESFULL = "Postulacion exitosa";
 
-    private List<OfertaLaboral> ofertasLaborales;
-
-    public PostulacionServiceImpl() {
-        this.ofertasLaborales = new ArrayList<>();
+    public PostulacionServiceImpl(EmpresaService empresaService) {
+        this.empresaService = empresaService;
     }
 
-    @Override
-    public String postularse(Postulacion postulacion, Long id) throws Exception {
 
-        OfertaLaboral ofertaLaboral = findById(id);
+    @Override
+    public String postularse(Postulacion postulacion, Long id, String razonSocial) throws Exception {
+
+        ArrayList<Empresa> empresas = getEmpresas();
+
+        ArrayList<OfertaLaboral> ofertaLaborales = empresaService.getOfertasLaborales(empresas, razonSocial);
+
+        OfertaLaboral ofertaLaboral = findById(id, ofertaLaborales);
 
         if(StateEnum.ABIERTA.equals(ofertaLaboral.getEstado().getEstado())) {
             //Valido que cumpla requisitos
@@ -38,8 +42,8 @@ public class PostulacionServiceImpl implements PostulacionService {
         return MSG_POSTULACION_SUCCESFULL;
     }
 
-    private OfertaLaboral findById(Long id) throws Exception {
-        return this.ofertasLaborales
+    private OfertaLaboral findById(Long id, ArrayList<OfertaLaboral> ofertas) throws Exception {
+        return   ofertas
                 .stream()
                 .filter(o -> o.getId() == id)
                 .findFirst()
@@ -61,5 +65,9 @@ public class PostulacionServiceImpl implements PostulacionService {
                     .stream().findAny()
                     .orElseThrow(() -> new Exception("No cumple con los idiomas requeridos"));
         }
+    }
+
+    private ArrayList getEmpresas() {
+        return EmpresaController.getInstanceEmpresas();
     }
 }

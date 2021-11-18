@@ -17,6 +17,6 @@ public class PostulacionController {
 
     public String postularse(PostulacionDTO postulacionDTO) throws Exception {
         Postulacion postulacion = this.objectMapper.convertValue(postulacionDTO, Postulacion.class);
-        return postulacionService.postularse(postulacion,  postulacionDTO.getId());
+        return postulacionService.postularse(postulacion,  postulacionDTO.getId(), postulacionDTO.getRazonSocial());
     }
 }

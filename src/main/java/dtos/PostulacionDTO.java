@@ -15,6 +15,7 @@ public class PostulacionDTO {
     private int edad;
     private ZonedDateTime fechaPostulacion;
     private Integer remuneracionPretendida;
+    private String razonSocial;
 
     public Long getId() {
         return id;
@@ -94,5 +95,13 @@ public class PostulacionDTO {
 
     public void setRemuneracionPretendida(Integer remuneracionPretendida) {
         this.remuneracionPretendida = remuneracionPretendida;
+    }
+
+    public String getRazonSocial() {
+        return razonSocial;
+    }
+
+    public void setRazonSocial(String razonSocial) {
+        this.razonSocial = razonSocial;
     }
 }

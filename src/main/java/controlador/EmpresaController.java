@@ -8,11 +8,12 @@ import services.EmpresaServiceImpl;
 import enums.CategoriasPublicacionEnum;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class EmpresaController {
 
     private EmpresaService empresaService;
-    private ArrayList<Empresa> empresas;
+    private static ArrayList<Empresa> empresas;
 
     public EmpresaController(){
         empresas = new ArrayList<>();
@@ -45,5 +46,12 @@ public class EmpresaController {
 
     public ArrayList<OfertaLaboral> getOfertasLaborales(Empresa empresa) {
         return null;
+    }
+
+    public static ArrayList getInstanceEmpresas() {
+        if(empresas == null) {
+            return new ArrayList<>();
+        }
+        return empresas;
     }
 }
