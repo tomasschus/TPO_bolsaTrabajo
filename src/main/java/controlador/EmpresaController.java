@@ -22,8 +22,6 @@ public class EmpresaController {
         empresaService = new EmpresaServiceImpl();
     }
 
-
-
     public void crearEmpresa(EmpresaDTO empresa) {
         this.getInstanceEmpresas().add(empresaService.crearEmpresa(
                 empresa.getRazonSocial(),  empresa.getDireccion(),
@@ -54,9 +52,11 @@ public class EmpresaController {
         empresaService.cerrarOfertaLaboral(getInstanceEmpresas(),razonSocial,idOfertaLaboral);
     }
 
-    public ArrayList<OfertaLaboral> getOfertasLaborales(String razonSocial) {
+    public ArrayList<OfertaLaboral> getOfertasLaboralesPorRazonSocial(String razonSocial) {
         return empresaService.getOfertasLaborales(getInstanceEmpresas(),razonSocial);
     }
+
+
 
     public List<Postulacion> getPostulantesByPublicacion(String razonSocial, Long id) throws Exception {
        return empresaService.getPostulantes(getInstanceEmpresas(), razonSocial, id);
