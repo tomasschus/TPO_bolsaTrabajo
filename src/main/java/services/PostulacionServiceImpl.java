@@ -16,8 +16,8 @@ public class PostulacionServiceImpl implements PostulacionService {
 
     private static final String MSG_POSTULACION_SUCCESFULL = "Postulacion exitosa";
 
-    public PostulacionServiceImpl(EmpresaService empresaService) {
-        this.empresaService = empresaService;
+    public PostulacionServiceImpl() {
+        this.empresaService = new EmpresaServiceImpl();
     }
 
 
