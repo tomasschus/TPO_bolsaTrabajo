@@ -2,6 +2,7 @@ package services;
 
 import domains.Empresa;
 import domains.OfertaLaboral;
+import domains.Requisitos;
 import domains.notification.Notificador;
 import domains.state.Cerrada;
 import enums.CategoriasPublicacionEnum;
@@ -45,7 +46,7 @@ public class EmpresaServiceImpl implements interfaces.EmpresaService {
     @Override
     public boolean modificarOfertaLaboral(ArrayList<Empresa> empresas, String razonSocial, Long idOfertaLaboral, String tituloBusqueda, String descripcionPuesto,
                                        String modalidadContrato, String tipoTrabajo,
-                                       String lugarTrabajo, String requisitos,
+                                       String lugarTrabajo, Requisitos requisitos,
                                        Integer sueldoOfrecido, CategoriasPublicacionEnum categoria ) {
 
         Empresa empresa = getEmpresaByRazonSocial(empresas,razonSocial);
@@ -56,8 +57,7 @@ public class EmpresaServiceImpl implements interfaces.EmpresaService {
                 ofertaLaboral.setModalidadContrato(modalidadContrato);
                 ofertaLaboral.setTipoTrabajo(tipoTrabajo);
                 ofertaLaboral.setLugarTrabajo(lugarTrabajo);
-                //TODO arreglar (Se cambio requisitos de string a object)
-                //ofertaLaboral.setRequisitos(requisitos);
+                ofertaLaboral.setRequisitos(requisitos);
                 ofertaLaboral.setSueldoOfrecido(sueldoOfrecido);
                 ofertaLaboral.setCategoria(categoria);
                 return true;
