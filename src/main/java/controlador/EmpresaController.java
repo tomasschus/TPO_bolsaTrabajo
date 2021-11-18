@@ -2,13 +2,14 @@ package controlador;
 
 import domains.Empresa;
 import domains.OfertaLaboral;
+import domains.Postulacion;
 import domains.notification.Notificador;
 import interfaces.EmpresaService;
 import services.EmpresaServiceImpl;
 import enums.CategoriasPublicacionEnum;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 public class EmpresaController {
 
@@ -16,17 +17,16 @@ public class EmpresaController {
     private static ArrayList<Empresa> empresas;
 
     public EmpresaController(){
-        empresas = new ArrayList<>();
         empresaService = new EmpresaServiceImpl();
     }
 
 
     public void crearEmpresa(String razonSocial, String direccion, Integer telefono, Integer cantidadPublicaciones, String rubro, String email, String nroCelular, Notificador notificador) {
-        this.empresas.add(empresaService.crearEmpresa( razonSocial,  direccion,  telefono,  cantidadPublicaciones,  rubro,  email,  nroCelular,  notificador));
+        getInstanceEmpresas().add(empresaService.crearEmpresa( razonSocial,  direccion,  telefono,  cantidadPublicaciones,  rubro,  email,  nroCelular,  notificador));
     }
 
     public boolean eliminarEmpresa( String razonSocial) {
-        return empresaService.eliminarEmpresa(empresas,razonSocial);
+        return empresaService.eliminarEmpresa(getInstanceEmpresas(),razonSocial);
     }
 
     public void crearOfertaLaboral(String razonSocial, OfertaLaboral ofertaLaboral) {
@@ -35,7 +35,7 @@ public class EmpresaController {
     }
 
     public boolean modificarOfertaLaboral( String razonSocial, Long id, String tituloBusqueda, String descripcionPuesto, String modalidadContrato, String tipoTrabajo, String lugarTrabajo, String requisitos, Integer sueldoOfrecido, CategoriasPublicacionEnum categoria) {
-        return empresaService.modificarOfertaLaboral( empresas,  razonSocial,  id,  tituloBusqueda,
+        return empresaService.modificarOfertaLaboral( getInstanceEmpresas(),  razonSocial,  id,  tituloBusqueda,
                  descripcionPuesto,  modalidadContrato,  tipoTrabajo,  lugarTrabajo,
                 requisitos,  sueldoOfrecido, categoria);
     }
@@ -46,6 +46,10 @@ public class EmpresaController {
 
     public ArrayList<OfertaLaboral> getOfertasLaborales(Empresa empresa) {
         return null;
+    }
+
+    public List<Postulacion> getPostulantesByPublicacion(String razonSocial, Long id) throws Exception {
+       return empresaService.getPostulantes(getInstanceEmpresas(), razonSocial, id);
     }
 
     public static ArrayList getInstanceEmpresas() {

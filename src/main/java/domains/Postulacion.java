@@ -7,6 +7,7 @@ public class Postulacion {
     private Postulante postulante;
     private ZonedDateTime fechaPostulacion;
     private Integer remuneracionPretendida;
+    private String cv;
 
     public Postulante getPostulante() {
         return postulante;
@@ -30,5 +31,13 @@ public class Postulacion {
 
     public void setRemuneracionPretendida(Integer remuneracionPretendida) {
         this.remuneracionPretendida = remuneracionPretendida;
+    }
+
+    public String getCv() {
+        return cv;
+    }
+
+    public void setCv(String cv) {
+        this.cv = cv;
     }
 }

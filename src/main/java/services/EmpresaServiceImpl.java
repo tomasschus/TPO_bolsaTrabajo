@@ -2,12 +2,23 @@ package services;
 
 import domains.Empresa;
 import domains.OfertaLaboral;
+import domains.Postulacion;
+import domains.Postulante;
 import domains.notification.Notificador;
 import domains.state.Cerrada;
 import enums.CategoriasPublicacionEnum;
+import interfaces.PostulacionService;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class EmpresaServiceImpl implements interfaces.EmpresaService {
+
+    private PostulacionService postulacionService;
+
+    public EmpresaServiceImpl(PostulacionService postulacionService) {
+        this.postulacionService = postulacionService;
+    }
 
     @Override
     public Empresa crearEmpresa(String razonSocial, String direccion, Integer telefono, Integer cantidadPublicaciones, String rubro, String email, String nroCelular, Notificador notificador) {
@@ -79,6 +90,14 @@ public class EmpresaServiceImpl implements interfaces.EmpresaService {
     @Override
     public ArrayList<OfertaLaboral> getOfertasLaborales(ArrayList<Empresa> empresas, String razonSocial) {
         return getEmpresaByRazonSocial(empresas,razonSocial).getOfertasLaborales();
+    }
+
+    @Override
+    public List<Postulacion> getPostulantes(ArrayList<Empresa> empresas, String razonSocial, Long id) throws Exception {
+
+        ArrayList<OfertaLaboral> ofertaLaborales = this.getOfertasLaborales(empresas, razonSocial);
+        OfertaLaboral ofertaLaboral = postulacionService.findById(id, ofertaLaborales);
+        return ofertaLaboral.getPostulantes();
     }
 
 

@@ -42,12 +42,12 @@ public class PostulacionServiceImpl implements PostulacionService {
         return MSG_POSTULACION_SUCCESFULL;
     }
 
-    private OfertaLaboral findById(Long id, ArrayList<OfertaLaboral> ofertas) throws Exception {
+    public OfertaLaboral findById(Long id, ArrayList<OfertaLaboral> ofertas) throws Exception {
         return   ofertas
                 .stream()
                 .filter(o -> o.getId() == id)
                 .findFirst()
-                .orElseThrow(() -> new Exception("id-oferta not exist"));
+                .orElseThrow(() -> new Exception("id-oferta " + id + " not exist"));
     }
 
     private void validateRequisitos(Requisitos requisitos, Postulante postulante) throws Exception {
