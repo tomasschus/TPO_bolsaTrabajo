@@ -2,10 +2,31 @@ package controlador;
 
 import domains.Empresa;
 import domains.OfertaLaboral;
-import java.util.ArrayList;
+import enums.CategoriasPublicacionEnum;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static enums.CategoriasPublicacionEnum.*;
 
 public class InformesController {
     ArrayList<Empresa> empresas = EmpresaController.getInstanceEmpresas();
+
+    public void getMCategoriasMasVisitadas(int m) {
+
+        ArrayList<OfertaLaboral> ofertaLaborals = this.getOfertaLaborales();
+        Map<CategoriasPublicacionEnum, Integer> categoriasVisitas = Map.of(Administración, 0, Tecnología, 0, Ventas, 0);
+        ofertaLaborals.forEach(o -> {
+            Integer visitas = categoriasVisitas.get(o.getCategoria());
+            categoriasVisitas.put(o.getCategoria(), o.getNumeroDeVisitas()+visitas);
+        });
+
+        categoriasVisitas.entrySet()
+                         .stream()
+                         .sorted(Map.Entry.<CategoriasPublicacionEnum, Integer>comparingByValue().reversed())
+                         .limit(m)
+                         .forEach(System.out::println);
+    }
 
     public ArrayList<OfertaLaboral> getOfertaLaborales(){
         ArrayList<OfertaLaboral> ofertasLaborales = new ArrayList<>();
