@@ -93,4 +93,24 @@ public class InformesController {
         }
         return masExigente;
     }
+
+    //part-time, remoto, menos requisitos
+    public OfertaLaboral getOfertaMenosExigente(){
+        OfertaLaboral menosExigente = null;
+        for(OfertaLaboral of: getOfertaLaborales()){
+            if(of.getTipoTrabajo().toLowerCase()=="part-time") {
+                if (of.getLugarTrabajo().toLowerCase() == "remoto") {
+                    if(menosExigente==null){
+                        menosExigente = of;
+                    }
+                    else {
+                        if (of.getRequisitos().getPuntos() < menosExigente.getRequisitos().getPuntos()) {
+                            menosExigente = of;
+                        }
+                    }
+                }
+            }
+        }
+        return menosExigente;
+    }
 }

@@ -23,11 +23,12 @@ public class EmpresaController {
     }
 
     public void crearEmpresa(EmpresaDTO empresa) {
-        this.getInstanceEmpresas().add(empresaService.crearEmpresa(
+        Empresa nuevaEmpresa = empresaService.crearEmpresa(
                 empresa.getRazonSocial(),  empresa.getDireccion(),
                 empresa.getTelefono(),  empresa.getCantidadPublicaciones(),
                 empresa.getRubro(),  empresa.getEmail(),
-                empresa.getNroCelular(),  empresa.getNotificador()));
+                empresa.getNroCelular(),  empresa.getNotificador());
+        this.getInstanceEmpresas().add(nuevaEmpresa);
     }
 
     public boolean eliminarEmpresa( String razonSocial) {
